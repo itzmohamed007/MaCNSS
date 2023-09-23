@@ -7,6 +7,14 @@ public class Patient {
     private String fullName;
     private String cin;
 
+    @Override
+    public String toString() {
+        return "registrationNumber: " + registrationNumber + "\n" +
+                "fullName: " + fullName + "\n" +
+                "cin: " + cin + "\n" +
+                "address: " + address;
+    }
+
     public int getRegistrationNumber() {
         return registrationNumber;
     }

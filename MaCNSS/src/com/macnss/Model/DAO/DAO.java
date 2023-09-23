@@ -5,8 +5,7 @@ import java.util.List;
 
 // O stand for (object)
 public interface DAO<O> {
-    O get(int id) throws SQLException;
-    List<O> getAll() throws SQLException;
+    List<O> get() throws SQLException;
     Boolean save(O o) throws SQLException;
     Boolean update(O o) throws SQLException;
     Boolean delete(int id) throws SQLException;

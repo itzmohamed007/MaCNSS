@@ -1,18 +1,12 @@
 package com.macnss.Model.Models.DTO;
 
-import java.sql.Ref;
-
-enum RefundStatus {
-    Pending,
-    Rejected,
-    Approved
-}
-
 public class CnssForm {
     private int id;
     private float totalPrice;
     private int attachmentsNumber;
-    private RefundStatus status;
+    private String status;
+
+    private int patientNumber;
 
     public int getId() {
         return id;
@@ -38,11 +32,19 @@ public class CnssForm {
         this.attachmentsNumber = attachmentsNumber;
     }
 
-    public RefundStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(RefundStatus status) {
+    public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getPatientNumber() {
+        return patientNumber;
+    }
+
+    public void setPatientNumber(int patientNumber) {
+        this.patientNumber = patientNumber;
     }
 }

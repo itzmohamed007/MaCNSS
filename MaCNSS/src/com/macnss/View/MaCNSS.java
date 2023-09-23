@@ -1,44 +1,125 @@
 package com.macnss.View;
 
+import com.macnss.Controller.CnssFormController;
+
 import java.util.Scanner;
 
 public class MaCNSS {
+    public static Scanner scanner = new Scanner(System.in);
     public static void startProject() {
-        System.out.println("Welcome to MaCNSS");
-        int choice;
-        do {
-            choice = displayMenu();
-            switch (choice) {
-                case 1:
-                    System.out.println("You want to display admin dashboard");
-                    break;
-                case 2:
-                    System.out.println("You want to display agent dashboard");
-                    break;
-                case 3:
-                    System.out.println("You want to display patient history");
-                    break;
-                case 4:
-                    System.out.println("You want to exit");
-                default:
-                    System.out.println("Please enter a available option");
-                    break;
-            }
-        } while (choice != 4);
+        int choice = displayDashboards();
+        switch (choice) {
+            case 1:
+                if(loginAsAdmin())
+                    displayAdminDashboard();
+                break;
+            case 2:
+                if(loginAsAgent())
+                    displayAgentDashboard();
+                break;
+            case 3:
+                displayPatientDashboard();
+                break;
+            case 4:
+                System.out.println("Exiting the program");
+                System.exit(0);
+            default:
+                System.out.println("Invalid option");
+        }
     }
 
-    private static int displayMenu() {
+    private static int displayDashboards() {
         System.out.println("1. Display Admin Dashboard");
         System.out.println("2. Display Agent Dashboard");
-        System.out.println("3. Display Patient History");
+        System.out.println("3. Display Patient Dashboard");
         System.out.println("4. Exit");
-        Scanner scanner = new Scanner(System.in);
+
         String choice = scanner.next();
         if(!isInteger(choice)) {
             System.out.println("Please enter a number");
-            return displayMenu();
+            return displayDashboards();
         }
         return Integer.parseInt(choice);
+    }
+    private static void displayAdminDashboard() {
+        while (true) {
+            switch (adminMenu()) {
+                case 1:
+                    System.out.println("You want to create a agent account");
+                    break;
+                case 2:
+                    System.out.println("You want to update a agent account");
+                    break;
+                case 3:
+                    System.out.println("You want to delete a agent account");
+                    break;
+                case 4:
+                    System.out.println("Exiting the program");
+                    System.exit(0);
+                default:
+                    System.out.println("Please enter a valid option");
+            }
+        }
+    }
+    private static void displayAgentDashboard() {
+        while (true) {
+            switch (agentMenu()) {
+                case 1:
+                    System.out.println("You want to create a Reimbursement folder");
+                    CnssFormController.saveCnssForm();
+                    break;
+                case 2:
+                    System.out.println("You want to update a Reimbursement folder");
+                    break;
+                case 3:
+                    System.out.println("You want to delete a Reimbursement folder");
+                    break;
+                case 4:
+                    System.out.println("Exiting the program");
+                    System.exit(0);
+                default:
+                    System.out.println("Please enter a valid option");
+            }
+        }
+    }
+    private static void displayPatientDashboard() {
+        System.out.println("You ware a patient and you want to display your history");
+    }
+
+    private static int adminMenu() {
+        System.out.println("Welcome Mr Admin");
+        System.out.println("1. Create new agent account");
+        System.out.println("2. Update old agent account");
+        System.out.println("3. Delete old agent account");
+        System.out.println("4. Exit");
+        String choice = scanner.next();
+        if(!isInteger(choice)) {
+            System.out.println("Please enter a number");
+            return agentMenu();
+        }
+        return Integer.parseInt(choice);
+    }
+
+    private static int agentMenu() {
+        System.out.println("You want to display agent dashboard");
+        System.out.println("1. Create new Reimbursement folder");
+        System.out.println("2. Update Reimbursement folder");
+        System.out.println("3. Delete Reimbursement folder");
+        System.out.println("4. Exit");
+        String choice = scanner.next();
+        if(!isInteger(choice)) {
+            System.out.println("Please enter a number");
+            return agentMenu();
+        }
+        return Integer.parseInt(choice);
+    }
+
+    private static boolean loginAsAdmin() {
+        return true;
+    }
+
+    private static boolean loginAsAgent() {
+        return true;
     }
 
     private static boolean isInteger(String string) {
