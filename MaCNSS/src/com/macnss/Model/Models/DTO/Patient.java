@@ -9,8 +9,8 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "registrationNumber: " + registrationNumber + "\n" +
-                "fullName: " + fullName + "\n" +
+        return "registration number: " + registrationNumber + "\n" +
+                "full name: " + fullName + "\n" +
                 "cin: " + cin + "\n" +
                 "address: " + address;
     }

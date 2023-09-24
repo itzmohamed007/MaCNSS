@@ -1,5 +1,6 @@
 package com.macnss.Controller;
 
+import com.macnss.Controller.Services.CnssFormService;
 import com.macnss.Model.DAOimplementation.CnssFormDAO;
 import com.macnss.Model.DAOimplementation.PatientDAO;
 import com.macnss.Model.Models.DTO.CnssForm;
@@ -25,23 +26,18 @@ public class CnssFormController extends CnssFormDAO {
             form.setTotalPrice(Float.parseFloat(scanner.next()));
             // Scanning medicines
             System.out.println("Enter attached medicines number: ");
-            int medicinesCount = scanner.nextInt(), i = 0;
-            Map<String, Float> medicines = new HashMap();
-            while (medicinesCount > i) {
+            int medicinesCount = scanner.nextInt();
+            ArrayList<String> medicineCodes = new ArrayList<>();
+            for (int i = 0; i < medicinesCount; i++) {
                 System.out.print("Enter medicine EAN code: ");
-                String code = scanner.next();
-                System.out.print("Enter medicine price: ");
-                float price = Float.parseFloat(scanner.next());
-                medicines.put(code, price);
-                i++;
+                medicineCodes.add(scanner.next());
             }
             System.out.println("Medicines inserted successfully!");
              // Scanning attachments
             System.out.print("Enter attachments number: ");
             form.setAttachmentsNumber(Integer.parseInt(scanner.next()));
             MedicalSummary[] attachments = new MedicalSummary[form.getAttachmentsNumber()]; // creating an array based on the number of documents entered by the agent
-            i = 0; // re-initializing loop counter to 0
-            while (form.getAttachmentsNumber() > i) {
+            for(int i = 0; i < form.getAttachmentsNumber(); i++) {
                 MedicalSummary attachment = new MedicalSummary();
                 System.out.println("Enter doctor's type: ");
                 System.out.println("1. Generalist");
@@ -56,22 +52,21 @@ public class CnssFormController extends CnssFormDAO {
                 float price = Float.parseFloat(scanner.next());
                 attachment.setPrice(price);
                 attachments[i] = attachment;
-                i++;
             }
             System.out.println("Attachments inserted successfully!");
-            System.out.println("Here are all the inserted medicines");
-//            for (Map.Entry<String, Float> entry : medicines.entrySet()) {
-//                String key = entry.getKey();
-//                float value = entry.getValue();
-//                System.out.println(key + ": " + value);
-//            }
-//            System.out.println("Here are all the attached documents");
-//            for(MedicalSummary document : attachments) {
-//                System.out.println("Doctor type: " + document.getDoctorType());
-//                System.out.println("Price: " + document.getPrice());
-//            }
+            System.out.println("Inserted medicines codes");
+            for (String code : medicineCodes) {
+                System.out.println("EAN code: " + code);
+            }
+            System.out.println("Attached documents");
+            for(MedicalSummary document : attachments) {
+                System.out.println("Doctor type: " + document.getDoctorType());
+                System.out.println("Price: " + document.getPrice());
+            }
             if(formOp.save(form)) {
-                System.out.println("Reimbursement folder created successfully (for now, i'm not getting attachments data in order to calculate the final reimbursement price, later i'll do it, now i'm sleepy)");
+                float reimbursementPrice = CnssFormService.calcRefundAmount(medicineCodes, attachments);
+                System.out.println("Reimbursement folder created successfully");
+                System.out.println("Base Reimbursement price: " + reimbursementPrice);
             } else {
                 System.out.println("Reimbursement folder creation failed");
             }

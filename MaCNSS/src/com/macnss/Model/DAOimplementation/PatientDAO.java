@@ -32,12 +32,13 @@ public class PatientDAO implements DAO<Patient> {
 
     public static Patient get(int registrationNumber) {
         String query = "SELECT * FROM patient WHERE registration_number = ?";
-        Patient patient = new Patient();
+        Patient patient = null;
         try {
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, registrationNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
+                patient = new Patient();
                 patient.setRegistrationNumber(resultSet.getInt("registration_number"));
                 patient.setFullName(resultSet.getString("full_name"));
                 patient.setCin(resultSet.getString("cin"));
