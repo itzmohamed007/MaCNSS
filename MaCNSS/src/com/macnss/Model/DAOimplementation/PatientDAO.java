@@ -7,11 +7,12 @@ import com.macnss.Model.Models.DTO.Patient;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class PatientDAO implements DAO<Patient> {
     @Override
-    public List<Patient> get() throws SQLException {
+    public List<Patient> getAll() throws SQLException {
         return null;
     }
 

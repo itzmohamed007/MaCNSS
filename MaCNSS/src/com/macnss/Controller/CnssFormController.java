@@ -1,6 +1,7 @@
 package com.macnss.Controller;
 
 import com.macnss.Controller.Services.CnssFormService;
+import com.macnss.Controller.Services.EmailService;
 import com.macnss.Model.DAOimplementation.CnssFormDAO;
 import com.macnss.Model.DAOimplementation.PatientDAO;
 import com.macnss.Model.Models.DTO.CnssForm;
@@ -54,7 +55,8 @@ public class CnssFormController extends CnssFormDAO {
             }
             if(formOp.save(form)) {
                 float reimbursementPrice = CnssFormService.calcRefundAmount(medicineCodes, attachments);
-                System.out.println("Reimbursement folder created successfully");
+                EmailService.sendEmail("Dear client, we would like to inform you that your Refund file was successfully created", "Refund File Creation", "itzmohamed007@gmail.com");
+               System.out.println("Reimbursement folder created successfully");
                 System.out.println("Base Reimbursement price: " + reimbursementPrice);
             } else {
                 System.out.println("Reimbursement folder creation failed");
@@ -62,6 +64,39 @@ public class CnssFormController extends CnssFormDAO {
         } else {
             System.out.println("Patient account not found");
         }
-
+    }
+    public static void updateCnssFormStatus() {
+        System.out.print("Enter refund file id: ");
+        int fileId = Integer.parseInt(scanner.next());
+        CnssForm form = formOp.get(fileId); // Fetching form from db
+        if(form != null) {
+            Patient patient = PatientDAO.get(form.getPatientNumber()); // Fetching patient for his email address
+            System.out.println("refund file found:");
+            System.out.println("Patient registration number: " + form.getPatientNumber());
+            System.out.println("File total price: " + form.getTotalPrice());
+            System.out.println("File status: " + form.getStatus());
+            System.out.println("Choose new status: ");
+            System.out.println("1. Approved");
+            System.out.println("2. Rejected");
+            int choice = Integer.parseInt(scanner.next());
+            String message;
+            if(choice == 1) {
+                System.out.println("Enter a approval message for the user: ");
+                message = scanner.next();
+                // REMEMBER TO RETURN TO ENUM (FORM_STATUS ENUM);
+                form.setStatus("Approved");
+                EmailService.sendEmail(message, "Refund File", patient.getAddress());
+            } else if(choice == 2) {
+                System.out.println("Enter a rejection message for the patient: ");
+                message = scanner.next();
+                form.setStatus("Rejected");
+                EmailService.sendEmail(message, "Refund File", patient.getAddress());
+            }
+            if(formOp.update(form)) {
+                System.out.println("Refund file status updated successfully");
+            } else {
+                System.out.println("Refund file updating failed");
+            }
+        }
     }
 }

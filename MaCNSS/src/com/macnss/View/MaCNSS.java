@@ -69,7 +69,8 @@ public class MaCNSS {
                     CnssFormController.saveCnssForm();
                     break;
                 case 2:
-                    System.out.println("You want to update a Reimbursement folder");
+                    System.out.println("You want to update a Reimbursement folder status");
+                    CnssFormController.updateCnssFormStatus();
                     break;
                 case 3:
                     System.out.println("You want to delete a Reimbursement folder");
@@ -103,7 +104,7 @@ public class MaCNSS {
     private static int agentMenu() {
         System.out.println("You want to display agent dashboard");
         System.out.println("1. Create new Reimbursement folder");
-        System.out.println("2. Update Reimbursement folder");
+        System.out.println("2. Update Reimbursement folder status");
         System.out.println("3. Delete Reimbursement folder");
         System.out.println("4. Exit");
         String choice = scanner.next();
