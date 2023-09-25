@@ -13,7 +13,7 @@ public class CnssFormService {
         // First phase: calculating total visits reimbursement => 80% for Specialist visits, 50% for Generalist visits
         for (MedicalSummary document : documents) {
             if(document.getDoctorType() == DoctorType.SPECIALIST)
-                refundAmount += document.getPrice() * 0.7;
+                refundAmount += document.getPrice() * 0.8;
             else
                 refundAmount += document.getPrice() * 0.5;
         }
@@ -28,13 +28,11 @@ public class CnssFormService {
         Map<String, Float> reimbursableMedicines = MedicineController.get();
          // Loop throw medicines codes
         for (String key : codes) {
-            // Checking if database medicines have current medicine
+            // Checking if database medicines contain current medicine
             if(reimbursableMedicines.containsKey(key)) {
                 // Adding reimbursable price to refundAmount variable
                 refundAmount += reimbursableMedicines.get(key);
-                System.out.println("Medicine found, refund price = " + reimbursableMedicines.get(key));
             }
-            System.out.println("current code: " + key);
         }
         return refundAmount;
     }

@@ -32,7 +32,6 @@ public class CnssFormController extends CnssFormDAO {
                 System.out.print("Enter medicine EAN code: ");
                 medicineCodes.add(scanner.next());
             }
-            System.out.println("Medicines inserted successfully!");
              // Scanning attachments
             System.out.print("Enter attachments number: ");
             form.setAttachmentsNumber(Integer.parseInt(scanner.next()));
@@ -52,16 +51,6 @@ public class CnssFormController extends CnssFormDAO {
                 float price = Float.parseFloat(scanner.next());
                 attachment.setPrice(price);
                 attachments[i] = attachment;
-            }
-            System.out.println("Attachments inserted successfully!");
-            System.out.println("Inserted medicines codes");
-            for (String code : medicineCodes) {
-                System.out.println("EAN code: " + code);
-            }
-            System.out.println("Attached documents");
-            for(MedicalSummary document : attachments) {
-                System.out.println("Doctor type: " + document.getDoctorType());
-                System.out.println("Price: " + document.getPrice());
             }
             if(formOp.save(form)) {
                 float reimbursementPrice = CnssFormService.calcRefundAmount(medicineCodes, attachments);
