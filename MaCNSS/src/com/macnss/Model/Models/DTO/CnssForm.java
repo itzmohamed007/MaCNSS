@@ -4,6 +4,18 @@ public class CnssForm {
     private int id;
     private float totalPrice;
     private int attachmentsNumber;
+
+    @Override
+    public String toString() {
+        return "CnssForm{" +
+                "id=" + id +
+                ", totalPrice=" + totalPrice +
+                ", attachmentsNumber=" + attachmentsNumber +
+                ", status='" + status + '\'' +
+                ", patientNumber=" + patientNumber +
+                '}';
+    }
+
     private String status;
 
     private int patientNumber;

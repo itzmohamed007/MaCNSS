@@ -72,10 +72,7 @@ public class MaCNSS {
                     System.out.println("You want to update a Reimbursement folder status");
                     CnssFormController.updateCnssFormStatus();
                     break;
-                case 3:
-                    System.out.println("You want to delete a Reimbursement folder");
-                    break;
-                case 4:
+                case 0:
                     System.out.println("Exiting the program");
                     System.exit(0);
                 default:

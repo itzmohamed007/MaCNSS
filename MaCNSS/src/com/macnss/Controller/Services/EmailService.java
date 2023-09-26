@@ -7,9 +7,9 @@ import javax.mail.internet.*;
 
 
 public class EmailService {
-    public static Boolean sendEmail(String body,String subject ,String email) {
-        final String username = "macnssApp@gmail.com";
-        final String password = "dgmy gwmj ntnt mskr";
+    public static void sendEmail(String body,String subject ,String email) {
+        final String username = System.getenv("MACNSS_EMAIL"); // environment variable
+        final String password = System.getenv("MACNSS_PASSWORD"); // environment variable
         Properties properties = System.getProperties();
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -29,10 +29,10 @@ public class EmailService {
             message.setSubject(subject);
             message.setText(body);
             Transport.send(message);
-            return true;
+            System.out.println("Email send successfully");
         } catch (MessagingException e) {
+            System.out.println("something went wrong while sending email to client");
             e.printStackTrace();
-            return false;
         }
     }
 }

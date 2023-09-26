@@ -19,9 +19,11 @@ public class CnssFormDAO implements DAO<CnssForm> {
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
                 form = new CnssForm();
+                form.setId(resultSet.getInt("cnss_form_id"));
                 form.setPatientNumber(resultSet.getInt("patient_number"));
                 form.setTotalPrice(resultSet.getFloat("total_price"));
                 form.setStatus(resultSet.getString("status"));
+                form.setAttachmentsNumber(resultSet.getInt("cnss_form_id"));
             }
         } catch (SQLException e) {
             System.out.println("something went wrong while fetching refund file record");
@@ -55,6 +57,8 @@ public class CnssFormDAO implements DAO<CnssForm> {
 
     @Override
     public Boolean update(CnssForm form) {
+        System.out.println("update method called");
+        System.out.println(form.toString());
         String query = "UPDATE cnss_form SET total_price = ?, attachements_number = ?, status = ?, patient_number = ? WHERE cnss_form_id = ?";
         try {
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);

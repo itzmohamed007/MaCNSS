@@ -79,19 +79,21 @@ public class CnssFormController extends CnssFormDAO {
             System.out.println("1. Approved");
             System.out.println("2. Rejected");
             int choice = Integer.parseInt(scanner.next());
-            String message;
+            scanner.nextLine(); // Consume \n character
+            String message = null;
             if(choice == 1) {
                 System.out.println("Enter a approval message for the user: ");
-                message = scanner.next();
+                message = scanner.nextLine();
                 // REMEMBER TO RETURN TO ENUM (FORM_STATUS ENUM);
                 form.setStatus("Approved");
-                EmailService.sendEmail(message, "Refund File", patient.getAddress());
             } else if(choice == 2) {
                 System.out.println("Enter a rejection message for the patient: ");
-                message = scanner.next();
+                // REMEMBER TO RETURN TO ENUM (FORM_STATUS ENUM);
+                message = scanner.nextLine();
                 form.setStatus("Rejected");
-                EmailService.sendEmail(message, "Refund File", patient.getAddress());
             }
+            // Sending email
+            EmailService.sendEmail(message, "Refund File", patient.getAddress());
             if(formOp.update(form)) {
                 System.out.println("Refund file status updated successfully");
             } else {
