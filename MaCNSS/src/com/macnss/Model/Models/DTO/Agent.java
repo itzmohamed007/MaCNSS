@@ -1,13 +1,26 @@
 package com.macnss.Model.Models.DTO;
 
 public class Agent extends User {
-    private int adminId;
+    private int agentId;
 
+
+    public Agent(int agentId,String email, String password) {
+        this.agentId = agentId;
+        this.email=email;
+        this.password=password;
+    }
+    public Agent(Agent A) {
+        this.agentId = A.agentId;
+        this.email=A.getEmail();
+        this.password=A.getPassword();
+    }
+
+    public  Agent(){};
     public int getAdminId() {
-        return adminId;
+        return agentId;
     }
 
     public void setAdminId(int adminId) {
-        this.adminId = adminId;
+        this.agentId = adminId;
     }
 }

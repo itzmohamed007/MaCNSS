@@ -1,7 +1,10 @@
 package com.macnss.View;
 
+import com.macnss.Controller.AdminController;
+import com.macnss.Controller.AgentController;
 import com.macnss.Controller.CnssFormController;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class MaCNSS {
@@ -41,17 +44,24 @@ public class MaCNSS {
         }
         return Integer.parseInt(choice);
     }
-    private static void displayAdminDashboard() {
+    private static void displayAdminDashboard()  {
         while (true) {
             switch (adminMenu()) {
                 case 1:
                     System.out.println("You want to create a agent account");
+                 try {
+                     AgentController.saveAgent();
+                 }catch (Exception e){
+                     new RuntimeException();
+                 }
                     break;
                 case 2:
-                    System.out.println("You want to update a agent account");
-                    break;
-                case 3:
                     System.out.println("You want to delete a agent account");
+                    try {
+                        AgentController.deleteAgent();
+                    }catch (Exception e){
+                        new RuntimeException();
+                    }
                     break;
                 case 4:
                     System.out.println("Exiting the program");
@@ -87,8 +97,7 @@ public class MaCNSS {
     private static int adminMenu() {
         System.out.println("Welcome Mr Admin");
         System.out.println("1. Create new agent account");
-        System.out.println("2. Update old agent account");
-        System.out.println("3. Delete old agent account");
+        System.out.println("2. Delete old agent account");
         System.out.println("4. Exit");
         String choice = scanner.next();
         if(!isInteger(choice)) {
@@ -113,11 +122,28 @@ public class MaCNSS {
     }
 
     private static boolean loginAsAdmin() {
-        return true;
+
+        try {
+            if (  AdminController.login()){
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return     false;
     }
 
     private static boolean loginAsAgent() {
-        return true;
+        try {
+            if (  AgentController.login()){
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return     false;
     }
 
     private static boolean isInteger(String string) {
