@@ -11,7 +11,7 @@ import java.util.Map;
 public class MedicineController {
     public static Map<String, Float> get() {
         String query = "SELECT * FROM medicine";
-        Map<String, Float> medicentMap = new HashMap<>();
+        Map<String, Float> medicentMap = new HashMap();
         try {
             Statement statement = DBConnection.getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery(query);

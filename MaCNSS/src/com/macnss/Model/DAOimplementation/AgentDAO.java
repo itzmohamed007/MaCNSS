@@ -1,6 +1,7 @@
 package com.macnss.Model.DAOimplementation;
 
 import com.macnss.Model.Database.DBConnection;
+import com.macnss.Model.Models.DTO.Admin;
 import com.macnss.Model.Models.DTO.Agent;
 import  com.macnss.Model.DAO.DAO;
 
@@ -10,10 +11,32 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AgentDAO implements DAO<Agent>{
-    @Override
-    public List<Agent> get() throws SQLException {
+
+    public Agent lgine(String email , String password) throws SQLException {
+        Agent agent=null;
+        String query = "select * from agent where email=? and password=?";
+        try {
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
+            preparedStatement.setString(1, email);
+            preparedStatement.setInt(2,password.hashCode());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                agent=new Agent(resultSet.getInt("agent_id"),resultSet.getString("email"),resultSet.getString("password"));
+                return  agent;
+            }
+            else {
+                return null;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("something went wrong ");
+
+            System.out.println(e.getMessage());
+        }
         return null;
     }
+
+
     public Agent getOne(int id) throws SQLException {
         Agent agent=null;
         String query = "select * from agent where agent_id=?";
@@ -39,8 +62,13 @@ public class AgentDAO implements DAO<Agent>{
     }
 
     @Override
+    public List<Agent> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
     public Boolean save(Agent o) throws SQLException {
-        String query = "INSERT INTO `agent`(`email`, `password`) VALUES (?,?)";
+        String query = "INSERT INTO `agent`(`email`,`password`) VALUES (?,?)";
         try {
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
             preparedStatement.setString(1,o.getEmail());

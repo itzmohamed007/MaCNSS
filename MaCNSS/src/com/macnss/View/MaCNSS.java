@@ -1,5 +1,6 @@
 package com.macnss.View;
 
+import com.macnss.Controller.AdminController;
 import com.macnss.Controller.AgentController;
 import com.macnss.Controller.CnssFormController;
 
@@ -78,7 +79,8 @@ public class MaCNSS {
                     CnssFormController.saveCnssForm();
                     break;
                 case 2:
-                    System.out.println("You want to update a Reimbursement folder");
+                    System.out.println("You want to update a Reimbursement folder status");
+                    CnssFormController.updateCnssFormStatus();
                     break;
                 case 3:
                     System.out.println("You want to delete a Reimbursement folder");
@@ -111,7 +113,7 @@ public class MaCNSS {
     private static int agentMenu() {
         System.out.println("You want to display agent dashboard");
         System.out.println("1. Create new Reimbursement folder");
-        System.out.println("2. Update Reimbursement folder");
+        System.out.println("2. Update Reimbursement folder status");
         System.out.println("3. Delete Reimbursement folder");
         System.out.println("4. Exit");
         String choice = scanner.next();
@@ -123,11 +125,28 @@ public class MaCNSS {
     }
 
     private static boolean loginAsAdmin() {
-        return true;
+
+        try {
+            if (  AdminController.login()){
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return     false;
     }
 
     private static boolean loginAsAgent() {
-        return true;
+        try {
+            if (  AgentController.login()){
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return     false;
     }
 
     private static boolean isInteger(String string) {
