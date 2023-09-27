@@ -3,6 +3,7 @@ package com.macnss.View;
 import com.macnss.Controller.AdminController;
 import com.macnss.Controller.AgentController;
 import com.macnss.Controller.CnssFormController;
+import com.macnss.Controller.PatientController;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -23,7 +24,7 @@ public class MaCNSS {
             case 3:
                 displayPatientDashboard();
                 break;
-            case 4:
+            case 0:
                 System.out.println("Exiting the program");
                 System.exit(0);
             default:
@@ -35,7 +36,7 @@ public class MaCNSS {
         System.out.println("1. Display Admin Dashboard");
         System.out.println("2. Display Agent Dashboard");
         System.out.println("3. Display Patient Dashboard");
-        System.out.println("4. Exit");
+        System.out.println("0. Exit");
 
         String choice = scanner.next();
         if(!isInteger(choice)) {
@@ -63,7 +64,7 @@ public class MaCNSS {
                         new RuntimeException();
                     }
                     break;
-                case 4:
+                case 0:
                     System.out.println("Exiting the program");
                     System.exit(0);
                 default:
@@ -91,14 +92,14 @@ public class MaCNSS {
         }
     }
     private static void displayPatientDashboard() {
-        System.out.println("You ware a patient and you want to display your history");
+        PatientController.displayHistory();
     }
 
     private static int adminMenu() {
         System.out.println("Welcome Mr Admin");
         System.out.println("1. Create new agent account");
         System.out.println("2. Delete old agent account");
-        System.out.println("4. Exit");
+        System.out.println("0. Exit");
         String choice = scanner.next();
         if(!isInteger(choice)) {
             System.out.println("Please enter a number");
@@ -111,8 +112,7 @@ public class MaCNSS {
         System.out.println("You want to display agent dashboard");
         System.out.println("1. Create new Reimbursement folder");
         System.out.println("2. Update Reimbursement folder status");
-        System.out.println("3. Delete Reimbursement folder");
-        System.out.println("4. Exit");
+        System.out.println("0. Exit");
         String choice = scanner.next();
         if(!isInteger(choice)) {
             System.out.println("Please enter a number");
@@ -122,28 +122,19 @@ public class MaCNSS {
     }
 
     private static boolean loginAsAdmin() {
-
         try {
-            if (  AdminController.login()){
-                return true;
-            }
+            return AdminController.login();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-        return     false;
     }
 
     private static boolean loginAsAgent() {
         try {
-            if (  AgentController.login()){
-                return true;
-            }
+            return AgentController.login();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-        return     false;
     }
 
     private static boolean isInteger(String string) {

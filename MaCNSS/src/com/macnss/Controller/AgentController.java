@@ -12,35 +12,28 @@ import java.util.Scanner;
 public class AgentController {
     private static Scanner scanner = new Scanner(System.in);
     private  static  AgentDAO agent=new AgentDAO();
+
     public  static boolean login() throws SQLException {
-
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("enter your email");
         String email = scanner.nextLine();
         System.out.println("enter your password");
         String password = scanner.nextLine();
-
-        //admin.lgine(email,password).toString();
-        if (agent.lgine(email,password)!= null) {
-            //send email
+        if (agent.login(email,password)!= null) {
             String code = "2121";
-
-            System.out.println("chek your email");
             EmailService.sendEmail(code,"your code",email);
+            System.out.println("chek your email");
             System.out.println("insert code");
             String codeFromAgent=scanner.nextLine();
-            if(codeFromAgent==code){
+            System.out.println("condition result below: ");
+            if(codeFromAgent.equals(code)){
                 System.out.println("welcome agent");
                 return  true;
+            } else {
+                System.out.println("code entred is not correct");
             }
-
-
-
         }else {
-            System.out.println("try agine ");
+            System.out.println("try again");
         }
-
         return  false;
     }
 
@@ -65,11 +58,14 @@ public class AgentController {
         AgentDAO agentDAO=new AgentDAO();
         System.out.println("enter the id of agent");
         int id= VerificationHelper.checkInt();
-        if (agentDAO.getOne(id)!=null){
-                                if ( agentDAO.delete(id)){
-                                    System.out.println("agent deleted");
-                                } else System.out.println("smthing was wrong");
-
-        }else{ System.out.println("no Agent with this id: "+id);}
+        if (agentDAO.get(id) != null){
+            if ( agentDAO.delete(id)){
+                System.out.println("agent deleted");
+            } else {
+                System.out.println("something was wrong");
+            }
+        } else {
+            System.out.println("no Agent with this id: " + id);
+        }
     }
 }

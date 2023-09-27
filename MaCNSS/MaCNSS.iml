@@ -21,7 +21,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../internt mnger/mysql-connector-java-8.0.25.jar!/" />
+          <root url="jar://C:/Program Files/mysql-connector-j-8.1.0/mysql-connector-j-8.1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -30,7 +30,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../internt mnger/activation-1.1.1.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/activation-1.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -39,7 +39,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../internt mnger/javax.mail-1.4.7.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/javax.mail-1.4.7.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

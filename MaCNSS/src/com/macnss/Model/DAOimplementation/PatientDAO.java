@@ -2,11 +2,13 @@ package com.macnss.Model.DAOimplementation;
 
 import com.macnss.Model.DAO.DAO;
 import com.macnss.Model.Database.DBConnection;
+import com.macnss.Model.Models.DTO.CnssForm;
 import com.macnss.Model.Models.DTO.Patient;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -50,5 +52,28 @@ public class PatientDAO implements DAO<Patient> {
             System.out.println(e.getMessage());
         }
         return patient;
+    }
+
+    public static List<CnssForm> getRefundFiles(int patient_number) {
+        String query = "SELECT * FROM cnss_form WHERE patient_number = ?";
+        List<CnssForm> refundForms = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
+            preparedStatement.setInt(1, patient_number);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                CnssForm form = new CnssForm();
+                form.setId(resultSet.getInt("cnss_form_id"));
+                form.setAttachmentsNumber(resultSet.getInt("attachements_number"));
+                form.setPatientNumber(resultSet.getInt("patient_number"));
+                form.setTotalPrice(resultSet.getFloat("total_price"));
+                form.setStatus(resultSet.getString("status"));
+                refundForms.add(form);
+            }
+        } catch (SQLException e) {
+            System.out.println("something went wrong while fetching patient refund files");
+            System.out.println(e.getMessage());
+        }
+        return refundForms;
     }
 }

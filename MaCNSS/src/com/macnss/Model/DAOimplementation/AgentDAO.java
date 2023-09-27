@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AgentDAO implements DAO<Agent>{
 
-    public Agent lgine(String email , String password) throws SQLException {
+    public Agent login(String email , String password) throws SQLException {
         Agent agent=null;
         String query = "select * from agent where email=? and password=?";
         try {
@@ -37,7 +37,7 @@ public class AgentDAO implements DAO<Agent>{
     }
 
 
-    public Agent getOne(int id) throws SQLException {
+    public Agent get(int id) throws SQLException {
         Agent agent=null;
         String query = "select * from agent where agent_id=?";
         try {
@@ -54,7 +54,7 @@ public class AgentDAO implements DAO<Agent>{
             }
 
         } catch (SQLException e) {
-            System.out.println("something went wrong while inserting new Agent record");
+            System.out.println("something went wrong while fetching agent record");
 
             System.out.println(e.getMessage());
         }
