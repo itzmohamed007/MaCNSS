@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class AdminDAO {
 
-    public Admin lgine(String email ,String password) throws SQLException {
+    public Admin login(String email ,String password) {
         Admin admin=null;
         String query = "select * from admin where email=? and password=?";
         try {
@@ -20,15 +20,13 @@ public class AdminDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
                 admin=new Admin(resultSet.getInt("admin_id"),resultSet.getString("email"),resultSet.getString("password"));
-                return  admin;
+                return admin;
             }
             else {
                 return null;
             }
-
         } catch (SQLException e) {
-            System.out.println("something went wrong");
-
+            System.out.println("something went wrong while login authentication process");
             System.out.println(e.getMessage());
         }
         return null;

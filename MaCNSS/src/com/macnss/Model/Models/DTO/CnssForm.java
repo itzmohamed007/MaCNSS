@@ -1,9 +1,12 @@
 package com.macnss.Model.Models.DTO;
 
+import java.sql.Ref;
+
 public class CnssForm {
     private int id;
     private float totalPrice;
     private int attachmentsNumber;
+    private RefundStatus status;
 
     @Override
     public String toString() {
@@ -15,8 +18,6 @@ public class CnssForm {
                 ", patientNumber=" + patientNumber +
                 '}';
     }
-
-    private String status;
 
     private int patientNumber;
 
@@ -44,11 +45,11 @@ public class CnssForm {
         this.attachmentsNumber = attachmentsNumber;
     }
 
-    public String getStatus() {
+    public RefundStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(RefundStatus status) {
         this.status = status;
     }
 

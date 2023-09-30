@@ -5,20 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6d6408a-c41c-4e67-a22a-6efed02ef454" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/macnss/Model/Models/DTO/RefundStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/macnss/helpers/ValidationHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MaCNSS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MaCNSS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/macnss/Controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/macnss/Controller/AgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Controller/AgentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/Controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Controller/PatientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/macnss/Controller/CnssFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Controller/CnssFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/AdminDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/AgentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/AgentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/CnssFormDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/CnssFormDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/PatientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/PatientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/Database/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/Database/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/Models/DTO/CnssForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/Models/DTO/CnssForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/macnss/View/MaCNSS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/View/MaCNSS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/macnss/helpers/VerificationHelper.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />

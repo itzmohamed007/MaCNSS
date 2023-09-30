@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AgentDAO implements DAO<Agent>{
 
-    public Agent login(String email , String password) throws SQLException {
+    public Agent login(String email , String password) {
         Agent agent=null;
         String query = "select * from agent where email=? and password=?";
         try {
@@ -27,7 +27,6 @@ public class AgentDAO implements DAO<Agent>{
             else {
                 return null;
             }
-
         } catch (SQLException e) {
             System.out.println("something went wrong ");
 
@@ -37,7 +36,7 @@ public class AgentDAO implements DAO<Agent>{
     }
 
 
-    public Agent get(int id) throws SQLException {
+    public Agent get(int id) {
         Agent agent=null;
         String query = "select * from agent where agent_id=?";
         try {
@@ -45,7 +44,6 @@ public class AgentDAO implements DAO<Agent>{
             preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-
                  agent=new Agent(resultSet.getInt("agent_id"),resultSet.getString("email"),resultSet.getString("password"));
                 return  agent;
             }
@@ -67,7 +65,7 @@ public class AgentDAO implements DAO<Agent>{
     }
 
     @Override
-    public Boolean save(Agent o) throws SQLException {
+    public Boolean save(Agent o) {
         String query = "INSERT INTO `agent`(`email`,`password`) VALUES (?,?)";
         try {
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
@@ -91,7 +89,7 @@ public class AgentDAO implements DAO<Agent>{
     }
 
     @Override
-    public Boolean delete(int id) throws SQLException {
+    public Boolean delete(int id) {
         String query = "delete from `agent` where agent_id=?";
         try {
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);

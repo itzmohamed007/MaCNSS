@@ -4,6 +4,7 @@ import com.macnss.Model.DAO.DAO;
 import com.macnss.Model.Database.DBConnection;
 import com.macnss.Model.Models.DTO.CnssForm;
 import com.macnss.Model.Models.DTO.Patient;
+import com.macnss.Model.Models.DTO.RefundStatus;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -67,7 +68,7 @@ public class PatientDAO implements DAO<Patient> {
                 form.setAttachmentsNumber(resultSet.getInt("attachements_number"));
                 form.setPatientNumber(resultSet.getInt("patient_number"));
                 form.setTotalPrice(resultSet.getFloat("total_price"));
-                form.setStatus(resultSet.getString("status"));
+                form.setStatus(RefundStatus.valueOf(resultSet.getString("status")));
                 refundForms.add(form);
             }
         } catch (SQLException e) {
