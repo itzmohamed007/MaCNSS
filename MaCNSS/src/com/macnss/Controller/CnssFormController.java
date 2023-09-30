@@ -85,11 +85,11 @@ public class CnssFormController extends CnssFormDAO {
             if(choice == 1) {
                 System.out.print("Enter approval message for the user: ");
                 message = scanner.nextLine();
-                form.setStatus(RefundStatus.APPROVED);
+                form.setStatus(RefundStatus.Approved);
             } else if(choice == 2) {
                 System.out.println("Enter a rejection message for the patient: ");
                 message = scanner.nextLine();
-                form.setStatus(RefundStatus.REJECTED);
+                form.setStatus(RefundStatus.Rejected);
             }
             // Sending email
             EmailService.sendEmail(message, "Refund File Status", patient.getAddress());

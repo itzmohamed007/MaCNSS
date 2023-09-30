@@ -8,10 +8,9 @@ import com.macnss.helpers.ValidationHelper;
 
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.zip.Deflater;
 
 public class MaCNSS {
-    private static Scanner scanner = new Scanner(System.in);
-
     public static void startProject() {
         int choice = displayDashboards();
         switch (choice) {
@@ -26,6 +25,9 @@ public class MaCNSS {
             case 3:
                 displayPatientDashboard();
                 break;
+            case 4:
+                displayCompanyDashboard();
+                break;
             case 0:
                 System.out.println("Exiting the program");
                 System.exit(0);
@@ -38,6 +40,7 @@ public class MaCNSS {
         System.out.println("1. Display Admin Dashboard");
         System.out.println("2. Display Agent Dashboard");
         System.out.println("3. Display Patient Dashboard");
+        System.out.println("4. Display Company Dashboard");
         System.out.println("0. Exit");
 
         return ValidationHelper.scannInt();
@@ -53,11 +56,9 @@ public class MaCNSS {
                     AgentController.deleteAgent();
                     break;
                 case 0:
-                    System.out.println("Exiting the program");
                     System.exit(0);
                 default:
                     System.out.println("Please enter a valid option");
-                    break;
             }
         }
     }
@@ -75,13 +76,45 @@ public class MaCNSS {
                     System.exit(0);
                 default:
                     System.out.println("Please enter a valid option");
-                    break;
             }
         }
     }
 
     private static void displayPatientDashboard() {
-        PatientController.displayHistory();
+        while (true) {
+            switch (patientMenu()) {
+                case 1: {
+                    PatientController.displayHistory();
+                    break;
+                }
+                case 2: {
+                    System.out.println("You want to display your disengagement status");
+                    break;
+                }
+                case 0:
+                    System.exit(1);
+                default:
+                    System.out.println("Please enter a valid option");
+                    break;
+            }
+        }
+    }
+
+    private static void displayCompanyDashboard() {
+        while (true) {
+            switch (companyMenu()) {
+                case 1:
+                    System.out.println("You want to create a company account");
+                    break;
+                case 2:
+                    System.out.println("You want to login to company account");
+                    break;
+                case 0:
+                    System.exit(1);
+                default:
+                    System.out.println("Please enter a valid option");
+            }
+        }
     }
 
     private static int adminMenu() {
@@ -102,12 +135,29 @@ public class MaCNSS {
         return ValidationHelper.scannInt();
     }
 
+    private static int patientMenu() {
+        System.out.println("You want to display agent dashboard");
+        System.out.println("1. Display historique");
+        System.out.println("2. Display disengagement status");
+        System.out.println("0. Exit");
+
+        return ValidationHelper.scannInt();
+    }
+
+    private static int companyMenu() {
+        System.out.println("You want to display company dashboard");
+        System.out.println("1. Create an account");
+        System.out.println("2. Login");
+        System.out.println("0. Exit");
+
+        return ValidationHelper.scannInt();
+    }
+
     private static boolean loginAsAdmin() {
         return AdminController.login();
     }
 
     private static boolean loginAsAgent() {
-//        return AgentController.login();
-        return true;
+        return AgentController.login();
     }
 }

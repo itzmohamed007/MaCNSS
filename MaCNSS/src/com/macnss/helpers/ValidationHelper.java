@@ -41,9 +41,9 @@ public class ValidationHelper {
 
     public static int scannInt(int min, int max){
         boolean validInput = false;
-        String stringNum = scanner.next();
         int num = 0;
         do {
+            String stringNum = scanner.next();
             // is integer
             if (isInteger(stringNum)) {
                 num = Integer.parseInt(stringNum);
