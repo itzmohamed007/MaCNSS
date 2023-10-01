@@ -2,19 +2,24 @@ package com.macnss.Model.Models.DTO;
 
 import java.util.Date;
 
-public class Patient {
+public class Employee {
     private int registrationNumber;
     private String fullName;
     private String cin;
     private String address;
-    private Date birthDate;
+    private Date birth_date;
+    private int companyNumber;
 
     @Override
     public String toString() {
-        return "registration number: " + registrationNumber + "\n" +
-                "full name: " + fullName + "\n" +
-                "cin: " + cin + "\n" +
-                "address: " + address;
+        return "Employee{" +
+                "registrationNumber=" + registrationNumber +
+                ", fullName='" + fullName + '\'' +
+                ", cin='" + cin + '\'' +
+                ", address='" + address + '\'' +
+                ", birth_date=" + birth_date +
+                ", companyNumber=" + companyNumber +
+                '}';
     }
 
     public int getRegistrationNumber() {
@@ -49,11 +54,19 @@ public class Patient {
         this.address = address;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public Date getBirth_date() {
+        return birth_date;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setBirth_date(Date birth_date) {
+        this.birth_date = birth_date;
+    }
+
+    public int getCompanyNumber() {
+        return companyNumber;
+    }
+
+    public void setCompanyNumber(int companyNumber) {
+        this.companyNumber = companyNumber;
     }
 }

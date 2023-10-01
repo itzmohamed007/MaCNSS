@@ -1,25 +1,25 @@
 package com.macnss.Model.Models.DTO;
 
 public class Company {
-    private int registration_number;
+    private String registrationNumber;
     private String name;
     private CompanyType type;
 
     @Override
     public String toString() {
         return "Company{" +
-                "registration_number=" + registration_number +
+                "registration_number=" + registrationNumber +
                 ", name='" + name + '\'' +
                 ", type=" + type +
                 '}';
     }
 
-    public int getRegistration_number() {
-        return registration_number;
+    public String getRegistrationNumber() {
+        return registrationNumber;
     }
 
-    public void setRegistration_number(int registration_number) {
-        this.registration_number = registration_number;
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
     }
 
     public String getName() {

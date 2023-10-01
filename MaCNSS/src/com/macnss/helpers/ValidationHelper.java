@@ -64,7 +64,7 @@ public class ValidationHelper {
     }
 
     public static String scannString () {
-        return "";
+        return scanner.next();
     }
 
     public static String scannEmail() {

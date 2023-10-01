@@ -1,9 +1,6 @@
 package com.macnss.View;
 
-import com.macnss.Controller.AdminController;
-import com.macnss.Controller.AgentController;
-import com.macnss.Controller.CnssFormController;
-import com.macnss.Controller.PatientController;
+import com.macnss.Controller.*;
 import com.macnss.helpers.ValidationHelper;
 
 import java.sql.SQLException;
@@ -23,10 +20,11 @@ public class MaCNSS {
                     displayAgentDashboard();
                 break;
             case 3:
-                displayPatientDashboard();
+                if(loginAsCompany())
+                    displayCompanyDashboard();
                 break;
             case 4:
-                displayCompanyDashboard();
+                displayPatientDashboard();
                 break;
             case 0:
                 System.out.println("Exiting the program");
@@ -39,8 +37,8 @@ public class MaCNSS {
     private static int displayDashboards() {
         System.out.println("1. Display Admin Dashboard");
         System.out.println("2. Display Agent Dashboard");
-        System.out.println("3. Display Patient Dashboard");
-        System.out.println("4. Display Company Dashboard");
+        System.out.println("3. Display Company Dashboard");
+        System.out.println("4. Display Patient Dashboard");
         System.out.println("0. Exit");
 
         return ValidationHelper.scannInt();
@@ -72,6 +70,8 @@ public class MaCNSS {
                 case 2:
                     CnssFormController.updateCnssFormStatus();
                     break;
+                case 3:
+                    CompanyController.createCompanyAccount();
                 case 0:
                     System.exit(0);
                 default:
@@ -104,10 +104,10 @@ public class MaCNSS {
         while (true) {
             switch (companyMenu()) {
                 case 1:
-                    System.out.println("You want to create a company account");
+                    System.out.println("You want to create an employee account");
                     break;
                 case 2:
-                    System.out.println("You want to login to company account");
+                    System.out.println("You want to update an employee work days count");
                     break;
                 case 0:
                     System.exit(1);
@@ -130,6 +130,7 @@ public class MaCNSS {
         System.out.println("You want to display agent dashboard");
         System.out.println("1. Create new Reimbursement folder");
         System.out.println("2. Update Reimbursement folder status");
+        System.out.println("3. Create Company account");
         System.out.println("0. Exit");
 
         return ValidationHelper.scannInt();
@@ -146,8 +147,8 @@ public class MaCNSS {
 
     private static int companyMenu() {
         System.out.println("You want to display company dashboard");
-        System.out.println("1. Create an account");
-        System.out.println("2. Login");
+        System.out.println("1. Create an employee account");
+        System.out.println("2. Update an employee work days");
         System.out.println("0. Exit");
 
         return ValidationHelper.scannInt();
@@ -158,6 +159,11 @@ public class MaCNSS {
     }
 
     private static boolean loginAsAgent() {
-        return AgentController.login();
+//        return AgentController.login();
+        return true;
+    }
+
+    private static boolean loginAsCompany() {
+        return CompanyController.login();
     }
 }
