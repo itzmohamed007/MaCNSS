@@ -1,5 +1,6 @@
 package com.macnss.Model.Models.DTO;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Patient {
@@ -7,7 +8,7 @@ public class Patient {
     private String fullName;
     private String cin;
     private String address;
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @Override
     public String toString() {
@@ -49,11 +50,11 @@ public class Patient {
         this.address = address;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 }

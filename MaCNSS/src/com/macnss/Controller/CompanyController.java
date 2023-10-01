@@ -3,6 +3,7 @@ package com.macnss.Controller;
 import com.macnss.Model.DAOimplementation.CompanyDAO;
 import com.macnss.Model.Models.DTO.Company;
 import com.macnss.Model.Models.DTO.CompanyType;
+import com.macnss.helpers.LocalStorage;
 import com.macnss.helpers.ValidationHelper;
 
 public class CompanyController extends CompanyDAO {
@@ -31,10 +32,10 @@ public class CompanyController extends CompanyDAO {
 
     public static boolean login() {
         System.out.println("You want to login as a company");
-        System.out.print("Enter company registration number: ");
-        company.setRegistrationNumber(ValidationHelper.scannString());
         System.out.print("Enter company name: ");
         company.setName(ValidationHelper.scannString());
+        System.out.print("Enter company registration number: ");
+        company.setRegistrationNumber(ValidationHelper.scannString());
         if(companyOp.login(company)) {
             System.out.println("Loged in successfully");
             return true;

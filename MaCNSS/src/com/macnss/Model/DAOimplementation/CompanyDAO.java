@@ -3,6 +3,7 @@ package com.macnss.Model.DAOimplementation;
 import com.macnss.Model.DAO.DAO;
 import com.macnss.Model.Database.DBConnection;
 import com.macnss.Model.Models.DTO.Company;
+import com.macnss.helpers.LocalStorage;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +28,7 @@ public class CompanyDAO implements DAO<Company> {
             preparedStatement.setString(3, company.getType().toString());
             int rowCount = preparedStatement.executeUpdate();
             if(rowCount > 0) {
-                System.out.println("Company UIID: " + uuid);
+                LocalStorage.getProperties().setProperty("UUID", uuid.toString());
                 return true;
             }
         } catch (SQLException e) {
@@ -55,6 +56,8 @@ public class CompanyDAO implements DAO<Company> {
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
                 if(resultSet.getString("name").equals(company.getName())) {
+                    // if authentication is successfull, store UUID in local storage
+                    LocalStorage.getProperties().setProperty("UUID", company.getRegistrationNumber());
                     return true;
                 }
             }
