@@ -104,17 +104,15 @@ public class MaCNSS {
         while (true) {
             switch (companyMenu()) {
                 case 1:
-                    PatientController.save();
-                    DisengagementController.createDisengagement();
+                    PatientController.save(); // Creating new employee, should be updated to check if employee is already registred in CNSS
+                    DisengagementController.createDisengagement(); // Linking disengagement informations to newly created employee
                     break;
                 case 2:
-                    DisengagementController.createDisengagement();
+                    DisengagementController.updateStatus();
                     break;
                 case 3:
-                    System.out.println("You want to update an employee work days count");
+                    PatientController.displayAll();
                     break;
-                case 4:
-                    System.out.println("You want to display all employees");
                 case 0:
                     System.exit(1);
                 default:
@@ -154,8 +152,8 @@ public class MaCNSS {
     private static int companyMenu() {
         System.out.println("You want to display company dashboard");
         System.out.println("1. Create an account for an employee");
-        System.out.println("2. Update employee work days");
-        System.out.println("3. Display all imployees disengagement status");
+        System.out.println("2. Update employee status");
+        System.out.println("3. Display all imployees");
         System.out.println("0. Exit");
 
         return ValidationHelper.scannInt();

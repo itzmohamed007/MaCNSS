@@ -16,6 +16,11 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 public class PatientDAO implements DAO<Patient> {
+    public List<Patient> getAllEmployees(int company_id) {
+        String query = "SELECT * FROM patient WHERE registration_number IN (SELECT patient_number FROM disengagement WHERE company_number = ?)";
+        return null;
+    }
+
     @Override
     public List<Patient> getAll() throws SQLException {
         return null;

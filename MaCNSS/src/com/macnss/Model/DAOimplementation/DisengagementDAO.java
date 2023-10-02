@@ -10,7 +10,8 @@ import java.util.List;
 
 public class DisengagementDAO implements DAO<Disengagement> {
     @Override
-    public List<Disengagement> getAll() throws SQLException {
+    public List<Disengagement> getAll() {
+
         return null;
     }
 

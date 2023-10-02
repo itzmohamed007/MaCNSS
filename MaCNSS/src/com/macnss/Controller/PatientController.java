@@ -53,4 +53,9 @@ public class PatientController extends PatientDAO {
             System.out.println("You have no refund files");
         }
     }
+
+    public static void displayAll() {
+        System.out.println("You want to display all employees disengagement status");
+
+    }
 }

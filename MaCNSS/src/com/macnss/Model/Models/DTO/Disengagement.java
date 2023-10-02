@@ -7,6 +7,7 @@ public class Disengagement {
     private int workedDays;
     private float salary;
     private int salaryContribution;
+    private EmployeeStatus status;
 
     public int getId() {
         return id;
@@ -54,5 +55,13 @@ public class Disengagement {
 
     public void setSalaryContribution(int salaryContribution) {
         this.salaryContribution = salaryContribution;
+    }
+
+    public EmployeeStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(EmployeeStatus status) {
+        this.status = status;
     }
 }
