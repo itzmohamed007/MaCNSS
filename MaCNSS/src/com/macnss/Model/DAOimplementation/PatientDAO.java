@@ -12,13 +12,31 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class PatientDAO implements DAO<Patient> {
-    public List<Patient> getAllEmployees(int company_id) {
+    public List<Patient> getAllEmployees(String company_id) {
         String query = "SELECT * FROM patient WHERE registration_number IN (SELECT patient_number FROM disengagement WHERE company_number = ?)";
-        return null;
+        Patient employee = null;
+        List<Patient> employees = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
+            preparedStatement.setString(1, company_id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                employee = new Patient();
+                employee.setRegistrationNumber(resultSet.getInt("registration_number"));
+                employee.setFullName(resultSet.getString("full_name"));
+                employee.setCin(resultSet.getString("cin"));
+                employee.setAddress(resultSet.getString("address"));
+                employee.setBirthDate(resultSet.getDate("birth_date").toLocalDate());
+                employees.add(employee);
+            }
+        } catch (SQLException e) {
+            System.out.println("something went wrong while fetching company employees");
+            System.out.println(e.getMessage());
+        }
+        return employees;
     }
 
     @Override

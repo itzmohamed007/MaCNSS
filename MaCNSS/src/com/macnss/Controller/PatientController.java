@@ -55,7 +55,15 @@ public class PatientController extends PatientDAO {
     }
 
     public static void displayAll() {
-        System.out.println("You want to display all employees disengagement status");
-
+        System.out.println("You want to display all employees");
+        List<Patient> employees = patientOp.getAllEmployees((String) LocalStorage.getProperties().get("UUID"));
+        for(Patient employee : employees) {
+            System.out.println("Registration number: " + employee.getRegistrationNumber());
+            System.out.println("Full name: " + employee.getFullName());
+            System.out.println("Cin: " + employee.getCin());
+            System.out.println("Address: " + employee.getAddress());
+            System.out.println("Birth date: " + employee.getBirthDate());
+            System.out.println("==================================");
+        }
     }
 }

@@ -23,7 +23,30 @@ public class DisengagementController extends DisengagementDAO {
         }
     }
 
-    public static void updateStatus() {
-        System.out.println("You want to update an employee status");
+    public static void retireEmployee() {
+        System.out.println("You want to retire an employee");
+    }
+
+    public static void updateWorkDays() {
+        System.out.println("You want to update employee work days");
+        System.out.println("Choose how you want to update employee work days: ");
+        System.out.println("1. Increment");
+        System.out.println("2. Decrement");
+        int daysCount = 0;
+        switch (ValidationHelper.scannInt(1, 2)) {
+            case 1:
+                System.out.print("Enter how many days you want to add: ");
+                daysCount = ValidationHelper.scannInt(1, 10);
+                break;
+            case 2:
+                System.out.print("Enter how many days you want to remove: ");
+                daysCount = ValidationHelper.scannInt(1, 10);
+                break;
+        }
+
+    }
+
+    public static void offbordEmployee() {
+        System.out.println("You want to offboard an employee");
     }
 }

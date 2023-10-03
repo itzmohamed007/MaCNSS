@@ -9,9 +9,25 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class DisengagementDAO implements DAO<Disengagement> {
+    public Boolean updateWorkDays(int employeeId, int workDays) {
+        String query = "UPDATE disengagement SET work_days = ? WHERE patient_number = ?";
+        try {
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
+            preparedStatement.setInt(1, workDays);
+            preparedStatement.setInt(2, employeeId);
+            int rowCount = preparedStatement.executeUpdate();
+            if(rowCount > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("something went wrong while updating employee work days");
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
     @Override
     public List<Disengagement> getAll() {
-
         return null;
     }
 

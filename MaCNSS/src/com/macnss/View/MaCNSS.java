@@ -108,10 +108,16 @@ public class MaCNSS {
                     DisengagementController.createDisengagement(); // Linking disengagement informations to newly created employee
                     break;
                 case 2:
-                    DisengagementController.updateStatus();
+                    DisengagementController.retireEmployee();
                     break;
                 case 3:
                     PatientController.displayAll();
+                    break;
+                case 4:
+                    DisengagementController.updateWorkDays();
+                    break;
+                case 5:
+                    DisengagementController.offbordEmployee();
                     break;
                 case 0:
                     System.exit(1);
@@ -152,8 +158,10 @@ public class MaCNSS {
     private static int companyMenu() {
         System.out.println("You want to display company dashboard");
         System.out.println("1. Create an account for an employee");
-        System.out.println("2. Update employee status");
+        System.out.println("2. Set employee to retirement");
         System.out.println("3. Display all imployees");
+        System.out.println("4. Update employee work days");
+        System.out.println("5. Employee offboarding");
         System.out.println("0. Exit");
 
         return ValidationHelper.scannInt();
