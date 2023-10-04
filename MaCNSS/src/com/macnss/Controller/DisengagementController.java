@@ -38,12 +38,12 @@ public class DisengagementController extends DisengagementDAO {
         int daysCount = 0;
         switch (ValidationHelper.scannInt(1, 2)) {
             case 1:
-                System.out.print("Enter how many days you want to add: ");
+                System.out.print("Enter how many days you want to add (max is 10 days): ");
                 daysCount = ValidationHelper.scannInt(1, 10);
                 increment = true;
                 break;
             case 2:
-                System.out.print("Enter how many days you want to remove: ");
+                System.out.print("Enter how many days you want to remove (max is 10 days): ");
                 daysCount = ValidationHelper.scannInt(1, 10);
                 break;
         }

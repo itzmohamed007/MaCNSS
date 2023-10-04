@@ -20,7 +20,7 @@ public class ValidationHelper {
                 num = Integer.parseInt(stringNum);
                 return num;
             } else {
-                System.out.println("Please enter a number:");
+                System.out.print("Enter a valid number: ");
             }
         } while (!validInput);
 
@@ -37,7 +37,7 @@ public class ValidationHelper {
                 num = Float.parseFloat(stringNum);
                 return num;
             } else {
-                System.out.println("Please enter a number:");
+                System.out.print("Enter a valid number: ");
             }
         } while (!validInput);
 
@@ -54,14 +54,13 @@ public class ValidationHelper {
                 num = Integer.parseInt(stringNum);
                 // is number fit inside available range
                 if(num > max || num < min) {
-                    System.out.println("Number out of range");
+                    System.out.print("Number out of range, please enter a valid number: ");
                     validInput = false;
                 } else {
                     validInput = true;
                 }
-                return num;
             } else {
-                System.out.println("Enter a valid number:");
+                System.out.print("Enter a valid number: ");
             }
         } while (!validInput);
 

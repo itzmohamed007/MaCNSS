@@ -7,7 +7,7 @@
     <list default="true" id="c6d6408a-c41c-4e67-a22a-6efed02ef454" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/macnss/Controller/DisengagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Controller/DisengagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/DisengagementDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/DisengagementDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/macnss/helpers/ValidationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/helpers/ValidationHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
