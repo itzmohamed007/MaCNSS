@@ -1,5 +1,6 @@
 package com.macnss.Controller;
 
+import com.macnss.Model.DAOimplementation.CompanyDAO;
 import com.macnss.Model.DAOimplementation.DisengagementDAO;
 import com.macnss.Model.Models.DTO.Disengagement;
 import com.macnss.Model.Models.DTO.EmployeeStatus;
@@ -57,5 +58,13 @@ public class DisengagementController extends DisengagementDAO {
 
     public static void offbordEmployee() {
         System.out.println("You want to offboard an employee");
+        System.out.print("Enter employee cin: ");
+        String cin = ValidationHelper.scannString();
+        if(disengagementOp.checkEmployeePresence(cin) && disengagementOp.offboardEmployee(cin)) {
+            System.out.println("Employee offboarded successfully");
+        } else {
+            System.out.println("Employee not found");
+        }
+
     }
 }

@@ -3,6 +3,7 @@ package com.macnss.Model.DAOimplementation;
 import com.macnss.Model.DAO.DAO;
 import com.macnss.Model.Database.DBConnection;
 import com.macnss.Model.Models.DTO.Company;
+import com.macnss.Model.Models.DTO.CompanyType;
 import com.macnss.helpers.LocalStorage;
 
 import java.sql.PreparedStatement;
