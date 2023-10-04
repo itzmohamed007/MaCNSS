@@ -29,19 +29,28 @@ public class DisengagementController extends DisengagementDAO {
 
     public static void updateWorkDays() {
         System.out.println("You want to update employee work days");
+        System.out.print("Enter employee cin: ");
+        String cin = ValidationHelper.scannString();
         System.out.println("Choose how you want to update employee work days: ");
         System.out.println("1. Increment");
         System.out.println("2. Decrement");
+        boolean increment = false;
         int daysCount = 0;
         switch (ValidationHelper.scannInt(1, 2)) {
             case 1:
                 System.out.print("Enter how many days you want to add: ");
                 daysCount = ValidationHelper.scannInt(1, 10);
+                increment = true;
                 break;
             case 2:
                 System.out.print("Enter how many days you want to remove: ");
                 daysCount = ValidationHelper.scannInt(1, 10);
                 break;
+        }
+        if(disengagementOp.updateWorkDays(cin, daysCount, increment)) {
+            System.out.println("Employee work days updated successfully");
+        } else {
+            System.out.println("Employee not found");
         }
 
     }

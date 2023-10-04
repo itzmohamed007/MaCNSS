@@ -9,12 +9,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class DisengagementDAO implements DAO<Disengagement> {
-    public Boolean updateWorkDays(int employeeId, int workDays) {
-        String query = "UPDATE disengagement SET work_days = ? WHERE patient_number = ?";
+    public Boolean updateWorkDays(String employeeCin, int workDays, boolean increment) {
+        String query = "UPDATE disengagement JOIN patient ON disengagement.patient_number = patient.registration_number SET disengagement.worked_days = worked_days - ? WHERE patient.cin = ?";
+        if(increment)
+            query = "UPDATE disengagement JOIN patient ON disengagement.patient_number = patient.registration_number SET disengagement.worked_days = worked_days + ? WHERE patient.cin = ?";
         try {
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, workDays);
-            preparedStatement.setInt(2, employeeId);
+            preparedStatement.setString(2, employeeCin);
             int rowCount = preparedStatement.executeUpdate();
             if(rowCount > 0) {
                 return true;

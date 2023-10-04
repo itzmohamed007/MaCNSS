@@ -7,10 +7,7 @@
     <list default="true" id="c6d6408a-c41c-4e67-a22a-6efed02ef454" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/macnss/Controller/DisengagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Controller/DisengagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/Controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Controller/PatientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/DisengagementDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/DisengagementDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/PatientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/PatientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/View/MaCNSS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/View/MaCNSS.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -41,6 +39,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Merging temp&quot;,
