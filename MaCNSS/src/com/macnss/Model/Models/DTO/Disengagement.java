@@ -9,6 +9,19 @@ public class Disengagement {
     private int salaryContribution;
     private EmployeeStatus status;
 
+    @Override
+    public String toString() {
+        return "Disengagement{" +
+                "id=" + id +
+                ", patientNumber=" + patientNumber +
+                ", companyNumber='" + companyNumber + '\'' +
+                ", workedDays=" + workedDays +
+                ", salary=" + salary +
+                ", salaryContribution=" + salaryContribution +
+                ", status=" + status +
+                '}';
+    }
+
     public int getId() {
         return id;
     }

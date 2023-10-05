@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DisengagementDAO implements DAO<Disengagement> {
     public Boolean retireEmployee(String cin, float retirementSalary) {
-        String query = "UPDATE disengagement SET company_number = (SELECT registration_number FROM company WHERE name = ?), salary = ?, salary_contritubtion = NULL, status = ? WHERE patient_number = (SELECT registration_number FROM patient WHERE cin = ?)";
+        String query = "UPDATE disengagement SET company_number = (SELECT registration_number FROM company WHERE name = ?), salary = ?, salary_contribution = NULL, status = ? WHERE patient_number = (SELECT registration_number FROM patient WHERE cin = ?)";
         try {
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
             preparedStatement.setString(1, "Country");
@@ -42,7 +42,7 @@ public class DisengagementDAO implements DAO<Disengagement> {
                 employee = new Disengagement();
                 employee.setPatientNumber(resultSet.getInt("patient_number"));
                 employee.setCompanyNumber(resultSet.getString("company_number"));
-                employee.setWorkedDays(resultSet.getInt("work_days"));
+                employee.setWorkedDays(resultSet.getInt("worked_days"));
                 employee.setSalary(resultSet.getFloat("salary"));
                 employee.setSalaryContribution(resultSet.getInt("salary_contribution"));
                 employee.setStatus(EmployeeStatus.valueOf(resultSet.getString("status")));
