@@ -3,6 +3,7 @@ package com.macnss.Model.DAOimplementation;
 import com.macnss.Model.DAO.DAO;
 import com.macnss.Model.Database.DBConnection;
 import com.macnss.Model.Models.DTO.Disengagement;
+import com.macnss.Model.Models.DTO.EmployeeStatus;
 import com.macnss.Model.Models.DTO.RefundStatus;
 
 import java.sql.PreparedStatement;
@@ -11,21 +12,48 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class DisengagementDAO implements DAO<Disengagement> {
-    public Boolean checkEmployeePresence(String cin) {
+    public Boolean retireEmployee(String cin, float retirementSalary) {
+        String query = "UPDATE disengagement SET company_number = (SELECT registration_number FROM company WHERE name = ?), salary = ?, salary_contritubtion = NULL, status = ? WHERE patient_number = (SELECT registration_number FROM patient WHERE cin = ?)";
+        try {
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
+            preparedStatement.setString(1, "Country");
+            preparedStatement.setFloat(2, retirementSalary);
+            preparedStatement.setString(3, "retired");
+            preparedStatement.setString(4, cin);
+            int rowCount = preparedStatement.executeUpdate();
+            if(rowCount > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("something went wrong while updating employee");
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    public Disengagement checkEmployeePresence(String cin) {
         String query = "SELECT * FROM disengagement WHERE patient_number IN (SELECT registration_number FROM patient WHERE cin = ?)";
+        Disengagement employee = null;
         try {
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
             preparedStatement.setString(1, cin);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                return true;
+                employee = new Disengagement();
+                employee.setPatientNumber(resultSet.getInt("patient_number"));
+                employee.setCompanyNumber(resultSet.getString("company_number"));
+                employee.setWorkedDays(resultSet.getInt("work_days"));
+                employee.setSalary(resultSet.getFloat("salary"));
+                employee.setSalaryContribution(resultSet.getInt("salary_contribution"));
+                employee.setStatus(EmployeeStatus.valueOf(resultSet.getString("status")));
             }
         } catch (SQLException e) {
             System.out.println("something went wrong while searching employee");
             System.out.println(e.getMessage());
         }
-        return false;
+        return employee;
     }
+
     public Boolean offboardEmployee(String cin) {
         String query = "UPDATE disengagement SET company_number = (SELECT registration_number FROM company WHERE name = ?), salary = null, salary_contribution = null, status = ?";
         try {
@@ -42,6 +70,7 @@ public class DisengagementDAO implements DAO<Disengagement> {
         }
         return false;
     }
+
     public Boolean updateWorkDays(String employeeCin, int workDays, boolean increment) {
         String query = "UPDATE disengagement JOIN patient ON disengagement.patient_number = patient.registration_number SET disengagement.worked_days = worked_days - ? WHERE patient.cin = ?";
         if(increment)

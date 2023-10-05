@@ -25,7 +25,29 @@ public class DisengagementController extends DisengagementDAO {
     }
 
     public static void retireEmployee() {
+        // THIS METHOD NEEDS TO BE TESTED
         System.out.println("You want to retire an employee");
+        System.out.print("Enter employee cin: ");
+        String cin = ValidationHelper.scannString();
+        Disengagement employee = disengagementOp.checkEmployeePresence(cin);
+        if(employee != null) {
+            if(employee.getWorkedDays() > 1320) {
+                System.out.println("Employee has not reached days count yet (1320 Day)");
+            } else if(employee.getStatus().equals(EmployeeStatus.RETIRED)) {
+                System.out.println("Employee is already retired");
+            } else {
+                System.out.println("Enter employee retirement informations: ");
+                System.out.print("Enter employee work days: ");
+                int workDays = ValidationHelper.scannInt();
+                System.out.print("Enter average base salary: ");
+                float averageBaseSalary = ValidationHelper.scannFloat();
+                if(disengagementOp.retireEmployee(cin, averageBaseSalary)) {
+                    System.out.println("Employee retired successfully");
+                }
+            }
+        } else {
+            System.out.println("Employee not found");
+        }
     }
 
     public static void updateWorkDays() {
@@ -60,7 +82,7 @@ public class DisengagementController extends DisengagementDAO {
         System.out.println("You want to offboard an employee");
         System.out.print("Enter employee cin: ");
         String cin = ValidationHelper.scannString();
-        if(disengagementOp.checkEmployeePresence(cin) && disengagementOp.offboardEmployee(cin)) {
+        if(disengagementOp.checkEmployeePresence(cin) != null && disengagementOp.offboardEmployee(cin)) {
             System.out.println("Employee offboarded successfully");
         } else {
             System.out.println("Employee not found");
