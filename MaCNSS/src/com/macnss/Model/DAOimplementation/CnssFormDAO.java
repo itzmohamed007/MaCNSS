@@ -3,6 +3,7 @@ package com.macnss.Model.DAOimplementation;
 import com.macnss.Model.DAO.DAO;
 import com.macnss.Model.Database.DBConnection;
 import com.macnss.Model.Models.DTO.CnssForm;
+import com.macnss.Model.Models.DTO.RefundStatus;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +23,7 @@ public class CnssFormDAO implements DAO<CnssForm> {
                 form.setId(resultSet.getInt("cnss_form_id"));
                 form.setPatientNumber(resultSet.getInt("patient_number"));
                 form.setTotalPrice(resultSet.getFloat("total_price"));
-                form.setStatus(resultSet.getString("status"));
+                form.setStatus(RefundStatus.valueOf(resultSet.getString("status")));
                 form.setAttachmentsNumber(resultSet.getInt("cnss_form_id"));
             }
         } catch (SQLException e) {
@@ -64,7 +65,7 @@ public class CnssFormDAO implements DAO<CnssForm> {
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
             preparedStatement.setFloat(1, form.getTotalPrice());
             preparedStatement.setInt(2, form.getAttachmentsNumber());
-            preparedStatement.setString(3, form.getStatus());
+            preparedStatement.setString(3, String.valueOf(form.getStatus()));
             preparedStatement.setInt(4, form.getPatientNumber());
             preparedStatement.setInt(5, form.getId());
             int rowCount = preparedStatement.executeUpdate();

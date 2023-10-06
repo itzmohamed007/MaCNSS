@@ -2,34 +2,32 @@ package com.macnss.Controller;
 
 import com.macnss.Model.DAOimplementation.AdminDAO;
 import com.macnss.Model.Models.DTO.Admin;
+import com.macnss.helpers.ValidationHelper;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class AdminController {
+   private static AdminDAO adminOp = new AdminDAO(); // op stand for operations, in this case, just authentification
 
-   private static AdminDAO admin=new AdminDAO();
-
-    public  static boolean login() throws SQLException {
-
+    public static boolean login() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("enter your email");
+        System.out.print("Enter your email: ");
         String email = scanner.nextLine();
-        System.out.println("enter your password");
+        System.out.print("Enter your password: ");
         String password = scanner.nextLine();
 
-        //admin.lgine(email,password).toString();
-        if (admin.lgine(email,password)!= null) {
-            //send email
-            System.out.println("welcome mr mr");
-            return  true;
-
-        }else {
-            System.out.println("try agine ");
+        if (adminOp.login(email, password) != null) {
+            return true;
+        } else {
+            System.out.println("Wrong credentials, enter 1 to repeat process");
+            int choice = ValidationHelper.scannInt();
+            if(choice == 1)
+                return login();
+            else
+                System.out.println("Exiting");
+            return false;
         }
-
-        return  false;
     }
-
 }
