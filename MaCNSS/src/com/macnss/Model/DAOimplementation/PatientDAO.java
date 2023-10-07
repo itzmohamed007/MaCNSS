@@ -99,6 +99,28 @@ public class PatientDAO implements DAO<Patient> {
         return patient;
     }
 
+    public static Patient get(String cin) {
+        String query = "SELECT * FROM patient WHERE cin = ?";
+        Patient patient = null;
+        try {
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
+            preparedStatement.setString(1, cin);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                patient = new Patient();
+                patient.setRegistrationNumber(resultSet.getInt("registration_number"));
+                patient.setFullName(resultSet.getString("full_name"));
+                patient.setCin(resultSet.getString("cin"));
+                patient.setAddress(resultSet.getString("address"));
+                patient.setBirthDate(resultSet.getDate("birth_date").toLocalDate());
+            }
+        } catch (SQLException e) {
+            System.out.println("something went wrong while fetching patient record");
+            System.out.println(e.getMessage());
+        }
+        return patient;
+    }
+
     public static List<CnssForm> getRefundFiles(int patient_number) {
         String query = "SELECT * FROM cnss_form WHERE patient_number = ?";
         List<CnssForm> refundForms = new ArrayList<>();

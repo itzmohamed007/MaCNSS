@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6d6408a-c41c-4e67-a22a-6efed02ef454" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/macnss/helpers/AgeCalculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/macnss/Controller/DisengagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Controller/DisengagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/DisengagementDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/DisengagementDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/Models/DTO/Disengagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/Models/DTO/Disengagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/Models/DTO/EmployeeStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/Models/DTO/EmployeeStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/macnss/Controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Controller/PatientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/PatientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/PatientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/Models/DTO/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/Models/DTO/Patient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/macnss/View/MaCNSS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/View/MaCNSS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/macnss/helpers/RetirementSalary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/helpers/RetirementSalary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,19 +43,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Merging temp&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/adm/Downloads/javax.mail-1.4.7.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;discord-application&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "v2-company",
+    "last_opened_file_path": "C:/Users/adm/Downloads/javax.mail-1.4.7.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "discord-application"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -62,6 +66,16 @@
       <updated>1695716753457</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.time.format.DateTimeParseException" package="java.time.format" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

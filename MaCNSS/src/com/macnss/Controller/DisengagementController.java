@@ -4,9 +4,12 @@ import com.macnss.Model.DAOimplementation.CompanyDAO;
 import com.macnss.Model.DAOimplementation.DisengagementDAO;
 import com.macnss.Model.Models.DTO.Disengagement;
 import com.macnss.Model.Models.DTO.EmployeeStatus;
+import com.macnss.helpers.AgeCalculator;
 import com.macnss.helpers.LocalStorage;
 import com.macnss.helpers.RetirementSalary;
 import com.macnss.helpers.ValidationHelper;
+
+import java.time.LocalDate;
 
 public class DisengagementController extends DisengagementDAO {
     private static Disengagement disengagement = new Disengagement();
@@ -114,6 +117,24 @@ public class DisengagementController extends DisengagementDAO {
         } else {
             System.out.println("Employee not found");
         }
+    }
 
+    public static void checkRetirement() {
+        Disengagement employee = disengagementOp.checkEmployeePresence(String.valueOf(LocalStorage.getProperties().get("patient_cin")));
+        if(employee == null) {
+            System.out.println("You are not an employee");
+        } else {
+            if (employee.getStatus() == EmployeeStatus.retired) {
+                System.out.println("You are already retired, your retirement salary: " + employee.getSalary() + " DH");
+            } else {
+                int employeeAge = AgeCalculator.calculateAge(LocalDate.parse(String.valueOf(LocalStorage.getProperties().get("patient_birth_date"))));
+                if(employeeAge < 55) {
+                    System.out.println("You have not reached retirement limit yet (55), Your current age: " + employeeAge);
+                } else {
+                    float retirementSalary = RetirementSalary.calcEmployeeRetirementSalary(employee.getWorkedDays(), employee.getSalary());
+                    System.out.println("You have reached the miminum retirement limit, your retirement salary will be: " + retirementSalary);
+                }
+            }
+        }
     }
 }
