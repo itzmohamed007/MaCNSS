@@ -1,6 +1,7 @@
 package com.macnss.View;
 
 import com.macnss.Controller.*;
+import com.macnss.Model.Models.DTO.Disengagement;
 import com.macnss.helpers.ValidationHelper;
 
 import java.sql.SQLException;
@@ -24,7 +25,8 @@ public class MaCNSS {
                     displayCompanyDashboard();
                 break;
             case 4:
-                displayPatientDashboard();
+                if(loginAsPatient())
+                    displayPatientDashboard();
                 break;
             case 0:
                 System.out.println("Exiting the program");
@@ -80,32 +82,12 @@ public class MaCNSS {
         }
     }
 
-    private static void displayPatientDashboard() {
-        while (true) {
-            switch (patientMenu()) {
-                case 1: {
-                    PatientController.displayHistory();
-                    break;
-                }
-                case 2: {
-                    System.out.println("You want to display your disengagement status");
-                    break;
-                }
-                case 0:
-                    System.exit(1);
-                default:
-                    System.out.println("Please enter a valid option");
-                    break;
-            }
-        }
-    }
-
     private static void displayCompanyDashboard() {
         while (true) {
             switch (companyMenu()) {
                 case 1:
-                    PatientController.save(); // Creating new employee, should be updated to check if employee is already registred in CNSS
-                    DisengagementController.createDisengagement(); // Linking disengagement informations to newly created employee
+                    PatientController.save();
+                    DisengagementController.createDisengagement();
                     break;
                 case 2:
                     DisengagementController.retireEmployee();
@@ -123,6 +105,26 @@ public class MaCNSS {
                     System.exit(1);
                 default:
                     System.out.println("Please enter a valid option");
+            }
+        }
+    }
+
+    private static void displayPatientDashboard() {
+        while (true) {
+            switch (patientMenu()) {
+                case 1: {
+                    PatientController.displayHistory();
+                    break;
+                }
+                case 2: {
+                    DisengagementController.checkRetirement();
+                    break;
+                }
+                case 0:
+                    System.exit(1);
+                default:
+                    System.out.println("Please enter a valid option");
+                    break;
             }
         }
     }
@@ -147,7 +149,7 @@ public class MaCNSS {
     }
 
     private static int patientMenu() {
-        System.out.println("You want to display agent dashboard");
+        System.out.println("You want to display patient dashboard");
         System.out.println("1. Display historique");
         System.out.println("2. Display disengagement status");
         System.out.println("0. Exit");
@@ -172,11 +174,14 @@ public class MaCNSS {
     }
 
     private static boolean loginAsAgent() {
-//        return AgentController.login();
-        return true;
+        return AgentController.login();
     }
 
     private static boolean loginAsCompany() {
         return CompanyController.login();
+    }
+
+    private static boolean loginAsPatient() {
+        return PatientController.login();
     }
 }

@@ -13,7 +13,7 @@ public class RetirementSalary {
             System.out.println(baseSalaryIncrementPercentage);
             if (baseSalaryIncrementPercentage > 20)
                 baseSalaryIncrementPercentage = 20;
-            retirementSalary = (float) (baseRetirementSalary + ((baseRetirementSalary * 0.01) * baseSalaryIncrementPercentage));
+            retirementSalary = (float) (baseRetirementSalary + ((baseSalary * 0.01) * baseSalaryIncrementPercentage));
         }
         return retirementSalaryAcceptableRange(retirementSalary);
     }

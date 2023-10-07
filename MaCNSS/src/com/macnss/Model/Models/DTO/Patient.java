@@ -12,10 +12,13 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "registration number: " + registrationNumber + "\n" +
-                "full name: " + fullName + "\n" +
-                "cin: " + cin + "\n" +
-                "address: " + address;
+        return "Patient{" +
+                "registrationNumber=" + registrationNumber +
+                ", fullName='" + fullName + '\'' +
+                ", cin='" + cin + '\'' +
+                ", address='" + address + '\'' +
+                ", birthDate=" + birthDate +
+                '}';
     }
 
     public int getRegistrationNumber() {
