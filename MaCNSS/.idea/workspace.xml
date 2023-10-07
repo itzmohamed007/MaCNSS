@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6d6408a-c41c-4e67-a22a-6efed02ef454" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/macnss/helpers/AgeCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/Controller/DisengagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Controller/DisengagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/Controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Controller/PatientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/PatientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/DAOimplementation/PatientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/Model/Models/DTO/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/Model/Models/DTO/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/View/MaCNSS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/View/MaCNSS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/macnss/helpers/RetirementSalary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/macnss/helpers/RetirementSalary.java" afterDir="false" />
-    </list>
+    <list default="true" id="c6d6408a-c41c-4e67-a22a-6efed02ef454" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
